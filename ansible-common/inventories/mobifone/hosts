@@ -1,0 +1,2 @@
+[all]
+mobile_mon01 ansible_host=171.244.52.178 ansible_user=root ansible_ssh_pass=vtdca@123458

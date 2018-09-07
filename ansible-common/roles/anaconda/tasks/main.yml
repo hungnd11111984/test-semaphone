@@ -1,0 +1,11 @@
+---
+- name: Create /apps 
+  file: path=/apps state=directory
+- name: Download anaconda bundle
+  get_url:
+    url: http://13.229.69.44/anaconda2.tar.gz
+    dest: /tmp/anaconda2.tar.gz
+- name: Extract anaconda bundle
+  unarchive: src=/tmp/anaconda2.tar.gz dest=/apps/ copy=no
+- name: Create environment for anaconda
+  copy: src=anaconda.sh dest=/etc/profile.d/anaconda.sh owner=root group=root mode=0755

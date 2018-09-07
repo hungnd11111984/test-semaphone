@@ -1,0 +1,7 @@
+---
+################## Disable selinux, set and add hostname
+- hosts: all
+  remote_user: ec2-user
+  sudo: yes
+  roles:
+    - {role: common}

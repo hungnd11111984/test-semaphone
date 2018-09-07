@@ -1,0 +1,10 @@
+---
+- name: check if services is exists
+  command: systemctl status firewalld
+  ignore_errors: yes
+  register: service_status
+
+
+- name: disabled firewalld
+  service: name=firewalld enabled=no
+  when: "service_status.rc == 0"

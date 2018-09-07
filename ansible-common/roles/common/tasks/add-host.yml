@@ -1,0 +1,10 @@
+---
+# task for add hostname
+- name: Set hostname for individual host
+  template: src=hostname.j2 dest=/etc/hostname
+
+- name: Update hostname without reboot server
+  command: hostname -F /etc/hostname
+
+- name: Add hostname fqdn
+  template: src=hosts.j2 dest=/etc/hosts

@@ -1,0 +1,10 @@
+---
+- name: Install libselinux as prereq for selinux ansible module
+  yum: name=libselinux-python state=present
+
+- name: Disable SELinux at next reboot
+  selinux: state=disabled
+
+- name: Set SELinux in permissive mode until the machine is rebooted
+  shell: setenforce 0
+  ignore_errors: True

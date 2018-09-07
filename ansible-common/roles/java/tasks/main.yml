@@ -1,0 +1,15 @@
+---
+- name: fetch java rpm (Redhat)
+  when: ansible_os_family == 'RedHat'
+  command: 'wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/{{ var_java_ver }}-{{ var_java_build }}/d54c1d3a095b4ff2b6607d096fa80163/jdk-{{ var_java_ver }}-linux-x64.rpm'
+
+- name: install java runtime environment (RedHat)
+  when: ansible_os_family == 'RedHat'
+  yum: name=jdk-{{ var_java_ver }}-linux-x64.rpm state=present
+
+- name: Set java environment
+  template: src=java.sh.j2 dest=/etc/profile.d/java.sh mode=0755
+
+- name: clean up
+  command: 'rm -f jdk-{{ var_java_ver }}-linux-x64.rpm'
+

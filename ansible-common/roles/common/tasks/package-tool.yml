@@ -1,0 +1,31 @@
+---
+# tasks for install repo and common packages tool
+- name: Install EPEL repository on Centos
+  yum: name=epel-release state=present
+  when: ansible_distribution == 'CentOS'
+
+- name: Install EPEL repository on Red Hat Enterprise Linux
+  yum: name=http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-9.noarch.rpm state=present
+  when: ansible_distribution == 'RedHat'
+
+- name: Install utilities
+  yum: name={{ item }} state=present
+  with_items:
+      - wget
+      - psmisc
+      - htop
+      - vnstat
+      - lsof
+      - net-tools
+      - links
+      - screen
+      - bzip2
+      - telnet
+      - unzip
+      - lftp
+      - rsync
+      - tcpdump
+      - tcptraceroute
+      - iotop
+      - sysstat
+      - vim

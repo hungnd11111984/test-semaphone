@@ -1,0 +1,6 @@
+---
+- name: Update Java JCE (local_policy.jar)
+  copy: src=local_policy.jar dest={{ java_home }}/jdk/jre/lib/security/
+
+- name: Update Java JCE (US_export_policy.jar)
+  copy: src=US_export_policy.jar dest={{ java_home }}/jdk/jre/lib/security/

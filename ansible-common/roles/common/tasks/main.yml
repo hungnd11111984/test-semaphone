@@ -1,0 +1,13 @@
+---
+- include_tasks: add-host.yml
+  tags: [common,add-host]
+
+- include_tasks: disable-selinux.yml
+  tags: [common,disable-selinux]
+
+- include_tasks: tuning-os.yml
+  tags: [common,tuning-os]
+
+- include_tasks: package-tool.yml
+  tags: [common,package-tool]
+

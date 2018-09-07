@@ -1,0 +1,8 @@
+---
+- name: Add http proxy for yum
+  blockinfile:
+    path: /etc/yum.conf
+    block: |
+      proxy=http://{{http_proxy}}:{{http_proxy_port}}
+      proxy_username={{proxy_user}}
+      proxy_password={{proxy_pass}}

@@ -1,0 +1,19 @@
+---
+### Java ####
+java_home: /usr/java/default
+remote_user: centos
+
+var_java_ver: 8u131
+var_java_build: b11
+
+### Domain ####
+telco_domain: trustingsocial.local
+
+### HTTP Proxy ###
+http_proxy: xxx.xxx.xxx.xxx
+http_proxy_port: xxx
+proxy_user: username
+proxy_pass: password
+
+### NTP Server ###
+ntp_server: "172.10.1.1;172.10.1.2;172.10.1.3"

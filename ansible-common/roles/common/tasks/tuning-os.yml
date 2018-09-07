@@ -1,0 +1,18 @@
+---
+- name: Set execute for file /etc/rc.d/rc.local
+  command: chmod 755 /etc/rc.d/rc.local
+
+- name: Add script Transparent Huge Page Compaction to /etc/rc.local
+  lineinfile:
+            dest: /etc/rc.local
+            insertafter: EOF
+            line: 'if test -f /sys/kernel/mm/transparent_hugepage/defrag; then echo never > /sys/kernel/mm/transparent_hugepage/defrag ;fi'
+
+- name: Copy script OS hardening
+  copy: src=os_protection.sh dest=/tmp/os_protection.sh owner=root group=root mode=0755
+
+- name: Run OS hardening script
+  shell: /tmp/os_protection.sh
+
+
+              
